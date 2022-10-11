@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!--dentist action-->
+    <record id="dentist_action" model="ir.actions.act_window">
+        <field name="name">Dentist</field>
+        <field name="res_model">dentist</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="medical_speciality_action" model="ir.actions.act_window">
+        <field name="name">Medical Speciality</field>
+        <field name="res_model">medical.speciality</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!--    insurance action-->
+    <record id="insurance_action" model="ir.actions.act_window">
+        <field name="name">Insurance</field>
+        <field name="res_model">insurance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- patient action-->
+
+    <record id="patient_action" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="res_model">patient</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <!--appointment action-->
+    <record id="appointment_action" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="res_model">appointment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--diseases action-->
+    <record id="diseases_action" model="ir.actions.act_window">
+        <field name="name">Diseases</field>
+        <field name="res_model">diseases</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--treatment action-->
+    <record id="treatment_action" model="ir.actions.act_window">
+        <field name="name">Treatment</field>
+        <field name="res_model">treatment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--imaging_test action-->
+    <record id="imaging_test_action" model="ir.actions.act_window">
+        <field name="name">Imaging Test</field>
+        <field name="res_model">imaging_test</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--imaging_test_type action-->
+    <record id="imaging_test_type_action" model="ir.actions.act_window">
+        <field name="name">Imaging Test Type</field>
+        <field name="res_model">imaging_test_type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--medical procedures action-->
+    <record id="medical_procedures_action" model="ir.actions.act_window">
+        <field name="name">Medical Procedures Type</field>
+        <field name="res_model">medical.procedures</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--teeth action-->
+    <record id="teeth_action" model="ir.actions.act_window">
+        <field name="name">Teeth</field>
+        <field name="res_model">teeth</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--clinic clinic action-->
+    <record id="clinic_center_action" model="ir.actions.act_window">
+        <field name="name">Dental Clinic Center</field>
+        <field name="res_model">clinic.center</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="clinic_building_action" model="ir.actions.act_window">
+        <field name="name">Dental Clinic Center</field>
+        <field name="res_model">clinic.building</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="clinic_unit_action" model="ir.actions.act_window">
+        <field name="name">Dental Clinic Unit</field>
+        <field name="res_model">clinic.unit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="clinic_operating_room_action" model="ir.actions.act_window">
+        <field name="name">Dental Operating Room</field>
+        <field name="res_model">clinic.operating.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    clinic end-->
+
+    <!--    menu item  dental_clinic_root-->
+    <menuitem id="dental_clinic_root"
+              name="Dental Clinic"/>
+
+    <!--    menu item dental_clinic_main sub root-->
+    <menuitem id="dental_clinic_main"
+              name="Dental Clinic"
+              parent="dental_clinic_root"/>
+
+    <!--        menu appointment -->
+    <menuitem id="appointment_root"
+              name="Appointments"
+              sequence="0"
+              parent="dental_clinic_root"/>
+    <menuitem id="appointment"
+              action="appointment_action"
+              name="Appointments"
+              parent="appointment_root"/>
+
+    <!--    menu patients-->
+    <menuitem id="patients_root"
+              name="Patients"
+              sequence="2"
+              parent="dental_clinic_root"/>
+
+    <menuitem id="patients"
+              action="patient_action"
+              name="Patients"
+              sequence="1"
+              parent="patients_root"/>
+
+    <menuitem id="patients_res_partner"
+              action="res_partner_action_patient"
+              name="Patients Related Users"
+              sequence="2"
+              parent="patients_root"/>
+
+
+    <!--        menu prescription -->
+
+    <menuitem id="prescription_root"
+              name="Prescription"
+              parent="dental_clinic_root"
+              sequence="2"/>
+    <menuitem id="prescription"
+              action="prescription_action"
+              name="Prescription"
+              sequence="1"
+              parent="prescription_root"/>
+
+    <!--        menu Treatment -->
+
+    <menuitem id="treatment_root"
+              name="Treatment"
+              parent="dental_clinic_root"
+              sequence="3"/>
+    <menuitem id="treatment"
+              action="treatment_action"
+              name="Treatment"
+              sequence="1"
+              parent="treatment_root"/>
+
+    <!--    menu insurance-->
+    <menuitem id="insurance_root"
+              name="Insurance"
+              sequence="4"
+              parent="dental_clinic_root"/>
+
+    <menuitem id="insurance_menu"
+              name="Insurances"
+              action="insurance_action"
+              parent="insurance_root"/>
+    <menuitem id="insurance_company_menu"
+              name="Insurance Company"
+              action="res_partner_action_insurance_company"
+              parent="insurance_root"/>
+
+
+
+    <!--        menu config-->
+    <menuitem id="dental_clinic_config"
+              name="Configuration"
+              parent="dental_clinic_root"/>
+
+    <!--        menu config dentist-->
+    <menuitem id="dental_clinic_physicians"
+              name="Physicians"
+              sequence="1"
+              parent="dental_clinic_config"/>
+
+    <menuitem id="dental_clinic_dentist"
+          name="Dentist"
+          action="dentist_action"
+          sequence="1"
+          parent="dental_clinic_physicians"/>
+
+    <menuitem id="medical_specialities"
+          name="Medical Specialities"
+          action="medical_speciality_action"
+          sequence="2"
+          parent="dental_clinic_physicians"/>
+
+    <!--        menu config diseases-->
+
+    <menuitem id="diseases"
+              name="Diseases"
+              action="diseases_action"
+              sequence="2"
+              parent="dental_clinic_config"/>
+    <!--        menu config treatment-->
+
+
+    <menuitem id="treatment_config"
+              name="Treatment"
+              action="treatment_config_action"
+              sequence="3"
+              parent="dental_clinic_config"/>
+
+    <!--        menu config imaging_test_type-->
+
+    <menuitem id="imaging_main_config"
+              name="Imaging"
+              sequence="4"
+              parent="dental_clinic_config"/>
+
+    <menuitem id="imaging_test_menu"
+              name="Imaging Test"
+              action="imaging_test_action"
+              sequence="1"
+              parent="imaging_main_config"/>
+
+    <menuitem id="imaging_test_type_menu"
+              name="Imaging Test Types"
+              action="imaging_test_type_action"
+              sequence="2"
+              parent="imaging_main_config"/>
+
+    <!--        menu config Medical Procedures-->
+
+    <menuitem id="medical_procedures_config"
+              name="Medical Procedures"
+              sequence="5"
+              parent="dental_clinic_config"/>
+    <menuitem id="medical_procedures_menu"
+              name="Medical Procedures"
+              action="medical_procedures_action"
+              sequence="1"
+              parent="medical_procedures_config"/>
+
+        <!--        menu config teeth-->
+
+    <menuitem id="teeth_config"
+              name="Teeth"
+              action="teeth_action"
+              sequence="6"
+              parent="dental_clinic_config"/>
+
+    <!--        menu config clinic center-->
+
+    <menuitem id="clinic_center_config"
+              name="Dental Clinic Center"
+              sequence="7"
+              parent="dental_clinic_config"/>
+
+    <menuitem id="clinic_center_menu"
+              name="Clinic Center"
+              action="clinic_center_action"
+              sequence="1"
+              parent="clinic_center_config"/>
+
+    <menuitem id="clinic_building_menu"
+              name="Clinic Building"
+              action="clinic_building_action"
+              sequence="3"
+              parent="clinic_center_config"/>
+
+    <menuitem id="clinic_operating_room_menu"
+              name="Operating Room"
+              action="clinic_operating_room_action"
+              sequence="4"
+              parent="clinic_center_config"/>
+
+    <menuitem id="clinic_unit_menu"
+              name="Clinic Unit"
+              action="clinic_unit_action"
+              sequence="2"
+              parent="clinic_center_config"/>
+</odoo>

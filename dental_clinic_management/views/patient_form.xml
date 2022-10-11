@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="patient_form" model="ir.ui.view">
+        <field name="name">Patient form</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <group string="Patient Info">
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="dob" string="Date of Birth"/>
+                            <field name="patient_age"/>
+                        </group>
+                        <group>
+                            <field name="patient_id_id"
+                                   string="Patient ID"/>
+                            <field name="gender"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="General Information">
+
+                            <group string="Patient General Information">
+                                <group>
+                                    <field name="family"/>
+                                    <field name="marital_status"/>
+                                </group>
+                                <group>
+                                    <field name="blood_type"/>
+                                    <field name="insurance"/>
+                                </group>
+                            </group>
+                            <group string="Patient Extra info">
+                                <field name="deceased"/>
+                            </group>
+                        </page>
+
+                        <page string="Patient Critical Information">
+
+                        </page>
+                        <page string="Medication">
+
+                        </page>
+                        <page string="Disease">
+                            <field name="diseases_ids">
+                                <tree>
+                                <field name="diseases"/>
+                                <field name="status"/>
+                                <field name="infectious"/>
+                                <field name="severity"/>
+                                <field name="allergy"/>
+                                <field name="pregnancy_warning"/>
+                                <field name="diagnosed"/>
+                                <field name="end_date"/>
+                                <field name="remarks"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Prescription">
+                            <field name="prescription_ids">
+                                <tree>
+                                    <field name="patient_id"/>
+                                    <field name="prescription_id_id"/>
+                                    <field name="log_in_user"/>
+                                    <field name="prescription_date"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Treatment Details">
+                            <field name="treatment_ids">
+                                <tree>
+                                    <field name="treatment_id_id"/>
+                                    <field name="dentist_id"/>
+                                    <field name="date_of_analysis"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Appointments">
+                            <field name="appointment_ids"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--            sequence data-->
+    <record id="seq_patient" model="ir.sequence">
+        <field name="name">Patient ID</field>
+        <field name="code">patient</field>
+        <field name="prefix">PD</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+
+</odoo>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="prescription_tree_view" model="ir.ui.view">
+        <field name="name">Prescription Tree View</field>
+        <field name="model">prescription</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id_id"
+                       string="Prescription"/>
+                <field name="prescription_id_id"/>
+                <field name="log_in_user"/>
+                <field name="prescription_date"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

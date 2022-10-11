@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="prescription_form" model="ir.ui.view">
+            <field name="name">prescription form</field>
+            <field name="model">prescription</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+
+
+                    </header>
+                    <sheet>
+
+                        <group string="Prescription">
+                            <group>
+                                <field name="patient_id_id"
+                                       string="Prescription"/>
+                                <field name="prescription_date"/>
+                                <field name="prescribing_dentist_id"/>
+                                <field name="appointment_id"
+                                       string="Appointment ID"/>
+                                <field name="Invoice_status"/>
+                            </group>
+
+                            <group>
+
+                                <field name="prescription_id_id" string="Prescription ID"/>
+                                <field name="log_in_user"/>
+                                <field name="pharmacy"/>
+                                <field name="price_list_clinic_id"/>
+                                <field name="invoice_exempt"/>
+                            </group>
+                            <notebook>
+                                <page>
+                                    <field name="prescription_ids">
+                                        <tree>
+                                            <field name="print"/>
+                                            <field name="medicine"/>
+                                            <field name="indication"/>
+                                            <field name="dose"/>
+                                            <field name="dose_unit"/>
+                                            <field name="form"/>
+                                            <field name="quantity"/>
+                                            <field name="treatment_duration"/>
+                                            <field name="treatment_period"/>
+                                            <field name="allow_substitution"/>
+                                            <field name="comment"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <group>
+                                                    <field name="medicine"/>
+                                                    <field name="allow_substitution"/>
+                                                    <field name="form"/>
+                                                    <field name="start_treatment_date"/>
+                                                </group>
+                                                <group>
+                                                    <field name="indication"/>
+                                                    <field name="print"/>
+                                                    <field name="administration_route"/>
+                                                    <field name="end_treatment_date"/>
+                                                </group>
+
+
+                                            </group>
+                                            <group string="Dosage" col="3">
+                                                <group>
+                                                    <field name="dose"/>
+                                                </group>
+                                                <group>
+                                                    <field name="dose_unit"/>
+
+                                                </group>
+
+                                                <group>
+                                                   <field name="dose_unit_multiple" string="X"/>
+                                                </group>
+
+
+                                            </group>
+                                            <group string="Frequency" col="2">
+                                                <group>
+                                                    <field name="specific_dosage_frequency"/>
+                                                </group>
+                                                <group>
+                                                    <field name="specific_dosage_unit"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+    </data>
+
+     <!--prescription action-->
+    <record id="prescription_action" model="ir.actions.act_window">
+        <field name="name">Prescription</field>
+        <field name="res_model">prescription</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+        <!--            sequence data-->
+    <record id="seq_prescription" model="ir.sequence">
+        <field name="name">prescription ID</field>
+        <field name="code">prescription</field>
+        <field name="prefix">PRES</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+
+</odoo>
+

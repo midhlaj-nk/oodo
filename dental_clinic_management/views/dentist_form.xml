@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="dentist_form" model="ir.ui.view">
+            <field name="name">dentist form</field>
+            <field name="model">dentist</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="dentist_id"/>
+                                <field name="speciality_id"/>
+                                <field name="dentist_id_id"/>
+                            </group>
+                            <group>
+                                <field name="ssn"/>
+
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+
+
+</odoo>
+

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="medical_procedures_tree_view" model="ir.ui.view">
+        <field name="name">Medical Procedures Tree View</field>
+        <field name="model">medical.procedures</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="process"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="insurance_tree_view" model="ir.ui.view">
+        <field name="name">insurance Tree View</field>
+        <field name="model">insurance</field>
+        <field name="arch" type="xml">
+            <tree>
+                  <field name="Insurance_number"/>
+                <field name="Insurance_company"/>
+                <field name="owner"/>
+                <field name="expiration_date"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

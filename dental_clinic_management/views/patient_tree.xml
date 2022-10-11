@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="patient_tree_view" model="ir.ui.view">
+        <field name="name">patient Tree View</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                  <field name="patient_id_id"
+                       string="ID"/>
+                <field name="patient_id"/>
+
+                <field name="gender"/>
+                <field name="dob"/>
+                <field name="deceased"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

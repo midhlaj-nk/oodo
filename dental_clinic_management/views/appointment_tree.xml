@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="appointment_tree_view" model="ir.ui.view">
+        <field name="name">appointment Tree View</field>
+        <field name="model">appointment</field>
+        <field name="arch" type="xml">
+            <tree>
+                  <field name="appointment_id_id"
+                       string="ID"/>
+                <field name="patient_id"/>
+
+                <field name="urgency_level"/>
+                <field name="appointment_start_date"/>
+                <field name="dentist_id"/>
+                <field name="health_center_id"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

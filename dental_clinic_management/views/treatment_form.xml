@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="treatment_form" model="ir.ui.view">
+            <field name="name">treatment form</field>
+            <field name="model">treatment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group string="Treatment ">
+
+
+                            <group>
+                                <field name="treatment_id_id" string="ID"/>
+                                <field name="patient_id"/>
+                                <field name="date_requested"/>
+                                <field name="price_list_clinic_id"/>
+                                <field name="invoice"/>
+                            </group>
+                            <group>
+                                <field name="operating_room"/>
+                                <field name="dentist_id"/>
+                                <field name="invoice_exempt"/>
+                            </group>
+                            <field name="treatment_line_ids">
+                                <tree editable="bottom">
+                                <field name="product_id"  domain="[('_is_treatment','=',True)]"  context="{'default__is_treatment': True}"/>
+                                <field name="qty"/>
+                                <field name="price_unit"/>
+                                </tree>
+                            </field>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+
+        <!--            sequence data-->
+    <record id="seq_treatment" model="ir.sequence">
+        <field name="name">Treatment</field>
+        <field name="code">treatment</field>
+        <field name="prefix">TR</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+
+
+</odoo>
+
