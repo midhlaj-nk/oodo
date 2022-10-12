@@ -7,7 +7,7 @@ class PrescriptionLine(models.Model):
 
     prescription_id = fields.Many2one('prescription', 'prescription_id_id')
 
-    medicine = fields.Many2one('product.template')
+    medicine = fields.Many2one('product.product')
     allow_substitution = fields.Boolean()
     form = fields.Char()  # many
     start_treatment_date = fields.Datetime()
@@ -21,9 +21,16 @@ class PrescriptionLine(models.Model):
     treatment_period = fields.Integer()
     comment = fields.Char()
 
+
     dose = fields.Integer()
     dose_unit = fields.Many2one('uom.uom')
     dose_unit_multiple = fields.Integer()
 
     specific_dosage_frequency = fields.Integer()
     specific_dosage_unit = fields.Many2one('uom.uom')
+
+    discontinued = fields.Boolean()
+    course_completed = fields.Boolean()
+    active = fields.Boolean()
+
+    patient_id = fields.Many2one('patient')

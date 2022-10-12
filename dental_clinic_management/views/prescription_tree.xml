@@ -6,9 +6,10 @@
         <field name="model">prescription</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="patient_id_id"
-                       string="Prescription"/>
-                <field name="prescription_id_id"/>
+
+                <field name="prescription_id_id" string="Prescription"/>
+                <field name="patient_id"
+                       string="Pateint"/>
                 <field name="log_in_user"/>
                 <field name="prescription_date"/>
 

@@ -6,7 +6,7 @@
     'summary': 'An app to manage dental clinic',
     'description': "Dental Clinic Management V16",
     'depends': [
-        'base', 'contacts','stock'
+        'base', 'contacts', 'stock', 'hr_expense'
     ],
     'data': [
         'security/ir.model.access.csv',
@@ -29,6 +29,7 @@
         'views/dentist_form.xml',
         'views/treatment_tree.xml',
         'views/appointment_form.xml',
+        'views/medicine_config.xml',
         'views/dental_clinic.xml',
 
     ],

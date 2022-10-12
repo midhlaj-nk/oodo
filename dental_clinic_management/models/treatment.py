@@ -11,12 +11,48 @@ class Treatment(models.Model):
     date_requested = fields.Date()
     price_list_clinic_id = fields.Many2one('product.pricelist', required=True)
     invoice = fields.Char()  # many
-    operating_room = fields.Char()  # many
+    operating_room = fields.Many2one('clinic.operating.room')
     dentist_id = fields.Many2one('dentist')
     date_of_analysis = fields.Date()
     invoice_exempt = fields.Boolean()
-
     treatment_line_ids = fields.One2many('treatment.lines', 'treatment_id')
+    state = fields.Selection(
+        selection=[('draft', 'Draft'),
+                   ('confirmed', 'Confirmed'), ('done', 'Done')],
+        default='draft')
+
+    def create_invoices(self):
+        self.state = "done"
+        vals = []
+        for record in self.treatment_line_ids:
+            vals.append((0, 0,
+                         {
+                             'product_id': record.product_id.id,
+                             'quantity': record.qty,
+                             'price_unit': record.product_id.list_price,
+                         }))
+            print(vals)
+        invoice = self.env['account.move'].create([
+            {'move_type': 'out_invoice',
+             'partner_id': self.patient_id.patient_id.id,
+             'ref': self.treatment_id_id,
+             'invoice_date': fields.Date.today(),
+             'invoice_line_ids': vals
+             }, ])
+
+        return {
+            'res_model': 'account.move',
+            'res_id': invoice.id,
+            'view_mode': 'form',
+            'view_type': 'form',
+            'type': 'ir.actions.act_window',
+        }
+
+    def button_confirm(self):
+        self.state = 'confirmed'
+
+    def button_cancel(self):
+        self.state = 'draft'
 
     @api.model
     def create(self, vals):

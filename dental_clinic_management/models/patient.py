@@ -39,7 +39,10 @@ class Patient(models.Model):
         ('ab-', 'AB -')])
     insurance = fields.Char()
     # Patient Extra Info
+    critical_info = fields.Text()
     deceased = fields.Boolean()
+    #  medication
+    medication_ids = fields.One2many('prescription.line', 'patient_id')
     # Appointment
     appointment_ids = fields.One2many('appointment', 'patient_id')
     # diseases
@@ -74,8 +77,6 @@ class Patient(models.Model):
         for rec in self:
             if (type(rec.patient_id_id)) == str and (
                     type(rec.patient_id.name)) == str:
-                print(type(rec.patient_id_id))
-                name = '['+rec.patient_id_id+']' + ' ' + rec.patient_id.name
+                name = '[' + rec.patient_id_id + ']' + ' ' + rec.patient_id.name
                 patient_list.append((rec.id, name))
-                print(patient_list)
         return patient_list

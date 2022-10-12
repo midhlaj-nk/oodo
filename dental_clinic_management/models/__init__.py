@@ -14,4 +14,5 @@ from . import imaging_test
 from . import medical_procedures
 from . import teeth
 from . import clinic_center
+from . import medicaments
 

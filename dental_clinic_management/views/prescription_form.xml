@@ -7,25 +7,39 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirmed,done"
+                               options="{'clickable':'1'}"/>
+                        <button name="button_confirm" string="Confirm"
+                                type="object" class="oe_highlight"
+                                states="draft"/>
+                        <button name="button_cancel" string="Cancel"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible':[('state','=','draft')]}"/>
+                        <button name="create_invoices" id="create_invoice_open"
+                                string="Create Invoice" type="object"
+                                class="btn-primary"
+                        attrs="{'invisible':['|','|',('state','=','draft'),('state','=','done'),('invoice_exempt','=',True)]} "/>
 
                     </header>
                     <sheet>
 
                         <group string="Prescription">
                             <group>
-                                <field name="patient_id_id"
-                                       string="Prescription"/>
-                                <field name="prescription_date"/>
-                                <field name="prescribing_dentist_id"/>
+                                <field name="patient_id"
+                                       string="Patient"/>
                                 <field name="appointment_id"
                                        string="Appointment ID"/>
+                                <field name="prescription_date"/>
+                                <field name="prescribing_dentist_id"/>
+
                                 <field name="Invoice_status"/>
                             </group>
 
                             <group>
 
-                                <field name="prescription_id_id" string="Prescription ID"/>
+                                <field name="prescription_id_id"
+                                       string="Prescription ID"/>
                                 <field name="log_in_user"/>
                                 <field name="pharmacy"/>
                                 <field name="price_list_clinic_id"/>
@@ -36,7 +50,9 @@
                                     <field name="prescription_ids">
                                         <tree>
                                             <field name="print"/>
-                                            <field name="medicine"/>
+                                            <field name="medicine"
+                                                   domain="[('_is_medicine','=',True)]"
+                                                   context="{'default__is_medicine': True}"/>
                                             <field name="indication"/>
                                             <field name="dose"/>
                                             <field name="dose_unit"/>
@@ -50,10 +66,14 @@
                                         <form>
                                             <group>
                                                 <group>
-                                                    <field name="medicine"/>
+                                                    <field name="medicine"
+                                                           domain="[('_is_medicine','=',True)]"
+                                                           context="{'default__is_medicine': True}"/>
+                                                    <field name="quantity"/>
                                                     <field name="allow_substitution"/>
                                                     <field name="form"/>
-                                                    <field name="start_treatment_date"/>
+
+
                                                 </group>
                                                 <group>
                                                     <field name="indication"/>
@@ -74,7 +94,8 @@
                                                 </group>
 
                                                 <group>
-                                                   <field name="dose_unit_multiple" string="X"/>
+                                                    <field name="dose_unit_multiple"
+                                                           string="X"/>
                                                 </group>
 
 
@@ -101,14 +122,14 @@
         </record>
     </data>
 
-     <!--prescription action-->
+    <!--prescription action-->
     <record id="prescription_action" model="ir.actions.act_window">
         <field name="name">Prescription</field>
         <field name="res_model">prescription</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-        <!--            sequence data-->
+    <!--            sequence data-->
     <record id="seq_prescription" model="ir.sequence">
         <field name="name">prescription ID</field>
         <field name="code">prescription</field>

@@ -6,6 +6,22 @@
             <field name="model">treatment</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirmed,done"
+                               options="{'clickable':'1'}"/>
+                        <button name="button_confirm" string="Confirm"
+                                type="object" class="oe_highlight"
+                                states="draft"/>
+                        <button name="button_cancel" string="Cancel"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible':[('state','=','draft')]}"/>
+                        <button name="create_invoices" id="create_invoice_open"
+                                string="Create Invoice" type="object"
+                                class="btn-primary"
+                        attrs="{'invisible':['|','|',('state','=','draft'),('state','=','done'),('invoice_exempt','=',True)]} "/>
+
+                    </header>
                     <sheet>
 
                         <group string="Treatment ">
@@ -25,9 +41,11 @@
                             </group>
                             <field name="treatment_line_ids">
                                 <tree editable="bottom">
-                                <field name="product_id"  domain="[('_is_treatment','=',True)]"  context="{'default__is_treatment': True}"/>
-                                <field name="qty"/>
-                                <field name="price_unit"/>
+                                    <field name="product_id"
+                                           domain="[('_is_treatment','=',True)]"
+                                           context="{'default__is_treatment': True}"/>
+                                    <field name="qty"/>
+                                    <field name="price_unit"/>
                                 </tree>
                             </field>
                         </group>
@@ -38,7 +56,7 @@
         </record>
     </data>
 
-        <!--            sequence data-->
+    <!--            sequence data-->
     <record id="seq_treatment" model="ir.sequence">
         <field name="name">Treatment</field>
         <field name="code">treatment</field>
@@ -46,7 +64,6 @@
         <field name="padding">4</field>
         <field name="company_id" eval="False"/>
     </record>
-
 
 
 </odoo>

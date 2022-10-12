@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="medicine_config_action" model="ir.actions.act_window">
+        <field name="name">Medicines</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default__is_medicine': True}</field>
+        <field name="domain">[('_is_medicine','=',True)]</field>
+    </record>
+
+
+</odoo>

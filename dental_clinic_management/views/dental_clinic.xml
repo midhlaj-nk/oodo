@@ -245,12 +245,18 @@
     <!--        menu config Medical Procedures-->
 
     <menuitem id="medical_procedures_config"
-              name="Medical Procedures"
+              name="Medicaments"
               sequence="5"
               parent="dental_clinic_config"/>
     <menuitem id="medical_procedures_menu"
               name="Medical Procedures"
               action="medical_procedures_action"
+              sequence="2"
+              parent="medical_procedures_config"/>
+
+    <menuitem id="medicine_menu"
+              name="Medicines"
+              action="medicine_config_action"
               sequence="1"
               parent="medical_procedures_config"/>
 
